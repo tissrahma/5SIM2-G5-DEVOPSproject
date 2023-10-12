@@ -1,8 +1,10 @@
-pipeline{
-	agent any
-	stages('Testing maven') {
-		steps {
-		eho  'hhhhhhhhh'
-		}
-	}
+pipeline {
+    agent any
+    stages {
+        stage('Testing maven') {
+            steps {
+                echo 'hhhhhhhhh'
+            }
+        }
+    }
 }
