@@ -6,17 +6,16 @@ pipeline {
                 echo 'hhhhhhhhh'
             }
         }
-	stage('Test') {
+        stage('Test') {
             steps {
-                sh 'mvn clean test'
+                // Specify the path to your pom.xml
+                sh 'mvn -f clean test'
             }
         }
     }
-
     post {
         always {
             junit '**/target/surefire-reports/*.xml'
         }
-    }
     }
 }
