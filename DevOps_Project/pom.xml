@@ -64,6 +64,14 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.1.1</version> <!-- Use an existing version -->
+                <configuration>
+                    <outputDirectory>${basedir}/target</outputDirectory>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
