@@ -6,7 +6,7 @@ pipeline {
                 echo 'hhhhhhhhh'
             }
         }
-        stage('Test') {
+        stage('JUNIT/MOCKITO') {
             steps {
                 // Specify the path to your pom.xml
                 script {
