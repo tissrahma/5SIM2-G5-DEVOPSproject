@@ -70,6 +70,7 @@
                 <version>2.22.2</version>
                 <configuration>
                     <skipTests>false</skipTests>
+                    <reportsDirectory>${project.build.directory}/custom-reports</reportsDirectory>
                 </configuration>
             </plugin>
             <plugin>
