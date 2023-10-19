@@ -8,8 +8,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                // Specify the path to your pom.xml using the -f option
-                sh 'mvn -f pom.xml clean test'
+                // Use the relative path to pom.xml
+                sh 'mvn -f ProjetSpring1/pom.xml clean test'
             }
         }
     }
