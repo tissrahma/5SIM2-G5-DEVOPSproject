@@ -14,6 +14,14 @@ pipeline {
                 sh "mvn -f ${POM_FILE} clean test"
             }
         }
+	stage('Build') {
+    steps {
+        // Use the sh step to run Maven build
+        sh 'mvn clean package'
+    }
+}
+
+
     }
     post {
         always {
