@@ -9,17 +9,20 @@ pipeline {
         stage('Test') {
             steps {
                 // Specify the path to your pom.xml
-            sh 'mvn -f 5SIM2-G5-DEVOPSproject/DevOps_Project/pom.xml clean test'
-       }
+                script {
+                    sh 'mvn -f 5SIM2-G5-DEVOPSproject/DevOps_Project/pom.xml clean test'
+                }
+            }
         }
-		stage('Clean Workspace') {
-    steps {
-        cleanWs()
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
     }
-    }
-	}
     post {
         always {
             junit '**/target/surefire-reports/*.xml'
         }
     }
+}
