@@ -23,7 +23,8 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public Product addProduct(Product product, Long idStock) {
         Stock stock = stockRepository.findById(idStock).orElseThrow(() -> new NullPointerException("stock not found"));
-        product.setStock(stock);
+        stock = stockRepository.save(stock);
+          product.setStock(stock);
         return productRepository.save(product);
     }
 
@@ -31,7 +32,6 @@ public class ProductServiceImpl implements IProductService {
     public Product retrieveProduct(Long id) {
         return productRepository.findById(id).orElseThrow(() -> new NullPointerException("Product not found"));
     }
-
     @Override
     public List<Product> retreiveAllProduct() {
         return productRepository.findAll();
