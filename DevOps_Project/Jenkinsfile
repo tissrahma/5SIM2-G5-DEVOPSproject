@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        POM_FILE = 'ProjetSpring1/pom.xml'
-    }
     stages {
         stage('Testing maven') {
             steps {
@@ -11,7 +8,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "mvn -f ${POM_FILE} clean test"
+                // Specify the path to your pom.xml using the -f option
+                sh 'mvn -f pom.xml clean test'
             }
         }
     }

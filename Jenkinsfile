@@ -4,24 +4,24 @@ pipeline {
         POM_FILE = 'ProjetSpring1/pom.xml'
     }
     stages {
-        stage('Testing maven') {
+        stage('Verify POM File') {
             steps {
-                echo 'hhhhhhhhh'
+                script {
+                    // Check if the POM file exists
+                    if (fileExists("${POM_FILE}")) {
+                        echo "POM file exists: ${POM_FILE}"
+                    } else {
+                        error "POM file does not exist: ${POM_FILE}"
+                    }
+                }
             }
         }
-        stage('Test') {
+        stage('Build and Test') {
             steps {
+                // Build and test steps (assuming the POM file exists)
                 sh "mvn -f ${POM_FILE} clean test"
             }
         }
-	stage('Build') {
-    steps {
-        // Use the sh step to run Maven build
-        sh 'mvn clean package'
-    }
-}
-
-
     }
     post {
         always {
