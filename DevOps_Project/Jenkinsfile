@@ -8,14 +8,16 @@ pipeline {
         }
         stage('Test') {
             steps {
-                // Specify the path to your pom.xml using the -f option
-                sh 'mvn -f pom.xml clean test'
+                // Specify the path to your pom.xml
+                script {
+                   sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml clean test'
+            }
             }
         }
     }
     post {
         always {
-            junit '**/target/surefire-reports/*.xml'
+            junit '*/target/surefire-reports/.xml'
         }
     }
 }
