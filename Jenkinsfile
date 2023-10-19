@@ -8,7 +8,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'mvn clean test'
+                // Specify the path to your pom.xml
+                sh 'mvn -f 5SIM2-G5-DEVOPSproject/DevOps_Project/pom.xml clean test'
             }
         }
     }
