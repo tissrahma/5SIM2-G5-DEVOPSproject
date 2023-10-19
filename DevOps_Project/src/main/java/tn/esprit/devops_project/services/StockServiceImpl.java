@@ -6,6 +6,7 @@ import tn.esprit.devops_project.services.Iservices.IStockService;
 import tn.esprit.devops_project.entities.Stock;
 import tn.esprit.devops_project.repositories.StockRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -18,6 +19,7 @@ public class StockServiceImpl implements IStockService {
     public Stock addStock(Stock stock) {
         return stockRepository.save(stock);
     }
+
 
     @Override
     public Stock retrieveStock(Long id) {

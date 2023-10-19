@@ -9,6 +9,7 @@ import java.util.Set;
 
 @Entity
 @Getter
+@Builder
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,4 +21,10 @@ public class Stock implements Serializable {
     String title;
     @OneToMany(mappedBy = "stock")
     Set<Product> products;
+
+
+    public Stock(long idStock, String title) {
+        this.idStock = idStock;
+        this.title = title;
+    }
 }
