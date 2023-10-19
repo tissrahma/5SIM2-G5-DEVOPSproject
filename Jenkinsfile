@@ -18,4 +18,10 @@ pipeline {
             junit '**/target/surefire-reports/*.xml'
         }
     }
+	stage('Clean Workspace') {
+    steps {
+        cleanWs()
+    }
+}
+
 }
