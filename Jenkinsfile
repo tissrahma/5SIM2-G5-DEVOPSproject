@@ -10,7 +10,7 @@ pipeline {
             steps {
                 // Specify the path to your pom.xml using double quotes
                 script {
-                    sh "mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml clean test"
+                    sh "mvn  /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml clean test"
                 }
             }
         }
