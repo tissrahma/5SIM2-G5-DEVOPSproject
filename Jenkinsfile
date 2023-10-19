@@ -8,8 +8,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                // Specify the path to your pom.xml
-                sh 'mvn -f clean test'
+                // Specify the path to your pom.xml using the -f option
+                sh 'mvn -f pom.xml clean test'
             }
         }
     }
