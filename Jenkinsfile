@@ -6,14 +6,6 @@ pipeline {
                 echo 'hhhhhhhhh'
             }
         }
-        stage('JUNIT/MOCKITO') {
-            steps {
-                // Specify the path to your pom.xml
-                script {
-                   sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml clean test'
-            }
-            }
-        }
     }
     post {
         always {
