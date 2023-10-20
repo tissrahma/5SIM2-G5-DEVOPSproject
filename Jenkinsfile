@@ -1,7 +1,13 @@
 node {
     stage('Preparation') {
         deleteDir()  // Delete the workspace before the build starts
-    }pipeline {
+    }
+
+    // Move the pipeline block outside the node block
+    // Define the pipeline stages here
+}
+
+pipeline {
     agent any
     stages {
         stage('Testing maven') {
@@ -14,7 +20,7 @@ node {
                 // Specify the path to your pom.xml
                 script {
                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml clean test'
-            }
+                }
             }
         }
     }
