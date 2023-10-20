@@ -130,7 +130,7 @@ public class StockTest {
     @Test
     public void testRetrieveAllStock() {
         List<Stock> stockList = new ArrayList<>();
-        stockList.add(new Stock(1L, "Stocki 1"));
+        stockList.add(new Stock(1L, "Stock 1"));
         stockList.add(new Stock(2L, "Stock 2"));
 
         when(stockRepository.findAll()).thenReturn(stockList);
