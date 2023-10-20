@@ -52,54 +52,54 @@ public class StockTest {
 
     @Test
     public void testAddStock() {
-//        Stock stockToAdd = new Stock();
-//        stockToAdd.setIdStock(1L);
-//        stockToAdd.setTitle("Test Stock");
-//
-//        when(stockRepository.save(stockToAdd)).thenReturn(stockToAdd);
-//
-//        Stock savedStock = stockService.addStock(stockToAdd);
-//
-//        System.out.println("Expected Stock: " + stockToAdd);
-//        System.out.println("Actual Stock: " + savedStock);
-//
-//        assertEquals(stockToAdd, savedStock);
+        Stock stockToAdd = new Stock();
+        stockToAdd.setIdStock(1L);
+        stockToAdd.setTitle("Test Stock");
+
+        when(stockRepository.save(stockToAdd)).thenReturn(stockToAdd);
+
+        Stock savedStock = stockService.addStock(stockToAdd);
+
+        System.out.println("Expected Stock: " + stockToAdd);
+        System.out.println("Actual Stock: " + savedStock);
+
+        assertEquals(stockToAdd, savedStock);
     }
 
     @Test
     public void testRetrieveStock() {
-//        Long stockId = 1L;
-//        Stock stock = new Stock();
-//        stock.setIdStock(stockId);
-//        stock.setTitle("Test Stock");
-//
-//        when(stockRepository.findById(stockId)).thenReturn(Optional.of(stock));
-//
-//        Stock retrievedStock = stockService.retrieveStock(stockId);
-//
-//        assertEquals(stock, retrievedStock);
+        Long stockId = 1L;
+        Stock stock = new Stock();
+        stock.setIdStock(stockId);
+        stock.setTitle("Test Stock");
+
+        when(stockRepository.findById(stockId)).thenReturn(Optional.of(stock));
+
+        Stock retrievedStock = stockService.retrieveStock(stockId);
+
+        assertEquals(stock, retrievedStock);
     }
 
     @Test
     public void testRetrieveStockNotFound() {
-//        Long nonExistentStockId = 2L;
-//
-//        when(stockRepository.findById(nonExistentStockId)).thenReturn(Optional.empty());
-//
-//        assertThrows(NullPointerException.class, () -> stockService.retrieveStock(nonExistentStockId));
+        Long nonExistentStockId = 2L;
+
+        when(stockRepository.findById(nonExistentStockId)).thenReturn(Optional.empty());
+
+        assertThrows(NullPointerException.class, () -> stockService.retrieveStock(nonExistentStockId));
     }
 
     @Test
     public void testRetrieveAllStock() {
-//        List<Stock> stockList = new ArrayList<>();
-//        stockList.add(new Stock(1L, "Stock 1"));
-//        stockList.add(new Stock(2L, "Stock 2"));
-//
-//        when(stockRepository.findAll()).thenReturn(stockList);
-//
-//        List<Stock> retrievedStockList = stockService.retrieveAllStock();
-//
-//        assertEquals(stockList, retrievedStockList);
+        List<Stock> stockList = new ArrayList<>();
+        stockList.add(new Stock(1L, "Stock 1"));
+        stockList.add(new Stock(2L, "Stock 2"));
+
+        when(stockRepository.findAll()).thenReturn(stockList);
+
+        List<Stock> retrievedStockList = stockService.retrieveAllStock();
+
+        assertEquals(stockList, retrievedStockList);
     }
 
 
