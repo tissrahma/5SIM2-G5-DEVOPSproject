@@ -1,4 +1,7 @@
-pipeline {
+node {
+    stage('Preparation') {
+        deleteDir()  // Delete the workspace before the build starts
+    }pipeline {
     agent any
     stages {
         stage('Testing maven') {
