@@ -10,7 +10,7 @@ pipeline {
             steps {
                 // Specify the path to your pom.xml
                 script {
-                   sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml clean test'
+                   sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml clean test'
             }
             }
         }
