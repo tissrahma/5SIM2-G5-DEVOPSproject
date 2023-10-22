@@ -1,5 +1,4 @@
 package tn.esprit.devops_project;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -81,7 +80,7 @@ public class SupplierTest {
 
         when(supplierRepository.findById(nonExistentSupplierId)).thenReturn(Optional.empty());
 
-        assertThrows(NullPointerException.class, () -> supplierService.retrieveSupplier(nonExistentSupplierId));
+        assertThrows(IllegalArgumentException.class, () -> supplierService.retrieveSupplier(nonExistentSupplierId));
     }
 
     @Test
