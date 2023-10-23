@@ -6,6 +6,38 @@ pipeline {
                 echo 'hhhhhhhhh'
             }
         }
+
+               stage('Checkout from GitHub') {
+                   steps {
+                       script {
+                           // Cloner le référentiel GitHub en spécifiant l'URL
+                           checkout([$class: 'GitSCM', branches: [[name: 'MohamedSlama5emeSIM2t']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
+                       }
+                   }
+               }
+
+            stage('Maven Clean') {
+                  steps {
+
+                      sh 'mvn clean'
+                  }
+              }
+
+              stage('Maven Compile') {
+                  steps {
+
+                      sh 'mvn compile'
+                  }
+              }
+              stage('MVN SONARQUBE') {
+                  steps {
+                      script {
+                          // Use the 'sh' step to run Maven SonarQube analysis
+                          sh 'mvn sonar:sonar -Dsonar.login=mohamed'
+                      }
+                  }
+              }
+
         stage('JUNIT/MOCKITO') {
             steps {
                 // Specify the path to your pom.xml
