@@ -33,7 +33,7 @@ pipeline {
                   steps {
                       script {
                           // Use the 'sh' step to run Maven SonarQube analysis
-                          sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=mohamed'
+                          sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_c404c0cf9f35626dbd7e8901b284d1c3950e692b'
                       }
                   }
               }
