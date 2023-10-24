@@ -52,7 +52,7 @@ pipeline {
 
         stage('Docker Image') {
             steps {
-                sh 'docker build -t timesheet-devops:1.0 -f /DevOps_Project/Dockerfile .'
+                sh 'docker build -t timesheet-devops:1.0 .'
             }
         }
         stage('Docker Hub') {
