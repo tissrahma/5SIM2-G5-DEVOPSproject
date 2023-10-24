@@ -1,10 +1,11 @@
-# Utilisez l'image OpenJDK 11 depuis Docker Hub
+# Use the OpenJDK 11 image from Docker Hub
 FROM openjdk:11
 
-# Exposez le port sur lequel votre application Spring Boot écoute (ajoutez le port correct)
+# Expose the port on which your Spring Boot application is listening (make sure to use the correct port)
 EXPOSE 8082
 
-# Copiez le fichier JAR de votre projet dans l'image Docker
+# Copy the JAR file from the project's target directory to the Docker image
 ADD target/DevOps_Project-2.1.jar DevOps_Project-2.1.jar
-# Commande d'entrée pour exécuter l'application Spring Boot
-ENTRYPOINT ["java", "-jar", "/DevOps_Project-2.1.jar"]
+
+# Command to run the Spring Boot application
+ENTRYPOINT ["java", "-jar", "DevOps_Project-2.1.jar"]
