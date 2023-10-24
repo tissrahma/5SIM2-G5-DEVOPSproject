@@ -46,14 +46,14 @@ pipeline {
             }
             }
         }
-            //    stage('Nexus') {
-            //               steps {
-            //                   script {
+               stage('Nexus') {
+                          steps {
+                              script {
 
-            //                       sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml deploy'
-            //                   }
-            //               }
-            //           }
+                                  sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml deploy'
+                              }
+                          }
+                      }
     }
   post {
        always {
