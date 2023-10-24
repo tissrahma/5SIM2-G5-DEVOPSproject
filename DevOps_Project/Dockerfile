@@ -6,6 +6,5 @@ EXPOSE 8082
 
 # Copiez le fichier JAR de votre projet dans l'image Docker
 ADD target/DevOps_Project-2.1.jar DevOps_Project-2.1.jar
-
 # Commande d'entrée pour exécuter l'application Spring Boot
-ENTRYPOINT ["java", "-jar", "/app/DevOps_Project-2.1.jar"]
+ENTRYPOINT ["java", "-jar", "/DevOps_Project-2.1.jar"]
