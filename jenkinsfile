@@ -52,7 +52,7 @@ pipeline {
 
            stage('Docker Image') {
             steps {
-                sh 'docker build -t devopsproject:1.0 .'
+                sh 'docker build -t devopsproject:1.0 -f DevOps_Project/Dockerfile .'
             }
         }
         stage('Docker Hub') {
