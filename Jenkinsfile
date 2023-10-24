@@ -19,21 +19,21 @@ pipeline {
             stage('Maven Clean') {
                   steps {
 
-                      sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml clean'
+                      sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/ProjetSpring1/pom.xml clean'
                   }
               }
 
               stage('Maven Compile') {
                   steps {
 
-                      sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml compile'
+                      sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/ProjetSpring1/pom.xml compile'
                   }
               }
               stage('MVN SONARQUBE') {
                   steps {
                       script {
 
-                          sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_2d7e848a8687bd061c7a33b7b6f5768a0aab3aa3'
+                          sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/ProjetSpring1/pom.xml sonar:sonar -Dsonar.login=sqa_2d7e848a8687bd061c7a33b7b6f5768a0aab3aa3'
                       }
                   }
               }
@@ -42,15 +42,15 @@ pipeline {
             steps {
 
                 script {
-                   sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml clean test'
+                   sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/ProjetSpring1/pom.xml clean test'
             }
             }
         }
-            
+             
     }
   post {
        always {
-
+                    
             junit '**/target/surefire-reports/**/*.xml'
 
                 }
