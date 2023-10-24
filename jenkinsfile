@@ -52,7 +52,7 @@ pipeline {
 
            stage('Docker Image') {
             steps {
-                sh 'docker build -t DevOps_Project:2.1 .'
+                sh 'docker build -t devopsproject:2.1 .'
             }
         }
         stage('Docker Hub') {
@@ -61,7 +61,7 @@ pipeline {
                 sh 'docker login -u mohamed.slama1@esprit.tn -p 14769075.'
 
                 // Poussez l'image vers DockerHub
-                sh 'docker push medslama21/timesheetdevops:1.0'
+                sh 'docker push medslama21/devopsproject:2.1'
             }
         }
         stage('Docker-compose') {
