@@ -7,59 +7,73 @@ pipeline {
             }
         }
 
-               stage('Checkout from GitHub') {
-                   steps {
-                       script {
-                           // Cloner le référentiel GitHub en spécifiant l'URL
-                           checkout([$class: 'GitSCM', branches: [[name: 'MohamedSlama5emeSIM2']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
-                       }
-                   }
-               }
+        stage('Checkout from GitHub') {
+            steps {
+                script {
+                    // Cloner le référentiel GitHub en spécifiant l'URL
+                    checkout([$class: 'GitSCM', branches: [[name: 'MohamedSlama5emeSIM2']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
+                }
+            }
+        }
 
             stage('Maven Clean') {
-                  steps {
+            steps {
+                sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml clean'
+            }
+            }
 
-                      sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml clean'
-                  }
-              }
-
-              stage('Maven Compile') {
-                  steps {
-
-                      sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml compile'
-                  }
-              }
-              stage('MVN SONARQUBE') {
-                  steps {
-                      script {
-
-                          sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_c404c0cf9f35626dbd7e8901b284d1c3950e692b'
-                      }
-                  }
-              }
+        stage('Maven Compile') {
+            steps {
+                sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml compile'
+            }
+        }
+        stage('MVN SONARQUBE') {
+            steps {
+                script {
+                    sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_c404c0cf9f35626dbd7e8901b284d1c3950e692b'
+                }
+            }
+        }
 
         stage('JUNIT/MOCKITO') {
             steps {
-
                 script {
-                   sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml clean test'
-            }
+                    sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml clean test'
+                }
             }
         }
-               stage('Nexus') {
-                          steps {
-                              script {
-
-                                  sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml deploy'
-                              }
-                          }
-                      }
-    }
-  post {
-       always {
-                    
-            junit '**/target/surefire-reports/**/*.xml'
-
+        stage('Nexus') {
+            steps {
+                script {
+                    sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml deploy'
                 }
+            }
+        }
+
+        stage('Docker Image') {
+            steps {
+                sh 'docker build -t timesheet-devops:1.0 .'
+            }
+        }
+        stage('Docker Hub') {
+            steps {
+                // Assurez-vous que vous avez configuré les crédentials DockerHub dans Jenkins.
+                sh 'docker login -u mohamed.slama1@esprit.tn -p 14769075.'
+
+                // Poussez l'image vers DockerHub
+                sh 'docker push medslama21/timesheetdevops:1.0'
+            }
+        }
+        stage('Docker-compose') {
+            steps {
+                sh 'docker-compose up -d'  // Lancement en mode détaché
+            }
+        }
+    // Ajoutez d'autres étapes de votre pipeline ici
+    }
+    post {
+        always {
+            junit '**/target/surefire-reports/**/*.xml'
+        }
     }
 }
