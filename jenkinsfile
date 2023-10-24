@@ -6,14 +6,54 @@ pipeline {
                 echo 'hhhhhhhhh'
             }
         }
+
+               stage('Checkout from GitHub') {
+                   steps {
+                       script {
+                           // Cloner le référentiel GitHub en spécifiant l'URL
+                           checkout([$class: 'GitSCM', branches: [[name: 'Moemen5emeSIM2']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
+                       }
+                   }
+               }
+
+            stage('Maven Clean') {
+                  steps {
+
+                      sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml clean'
+                  }
+              }
+
+              stage('Maven Compile') {
+                  steps {
+
+                      sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml compile'
+                  }
+              }
+              stage('MVN SONARQUBE') {
+                  steps {
+                      script {
+
+                          sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_5819c0b9106fc11a111f8aadefff70940c5726ec'
+                      }
+                  }
+              }
+
         stage('JUNIT/MOCKITO') {
             steps {
-                // Specify the path to your pom.xml
+
                 script {
                    sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml clean test'
             }
             }
         }
+            //    stage('Nexus') {
+            //               steps {
+            //                   script {
+
+            //                       sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml deploy'
+            //                   }
+            //               }
+            //           }
     }
   post {
        always {
