@@ -46,6 +46,13 @@ pipeline {
             }
             }
         }
+        stage('Nexus') {
+                    steps {
+                        script {
+                            sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml deploy'
+                        }
+                    }
+                }
 
     }
   post {
