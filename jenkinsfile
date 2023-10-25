@@ -49,7 +49,7 @@ pipeline {
         stage('Nexus') {
                     steps {
                         script {
-                            sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml deploy'
+                            sh 'mvn -f /var/lib/jenkins/workspace/ArjebDevops/DevOps_Project/pom.xml deploy'
                         }
                     }
                 }
