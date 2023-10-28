@@ -51,9 +51,16 @@ pipeline {
         }
         stage('Docker Image') {
             steps {
-                sh 'docker build -t devopsproject:1.0 -f DevOps_Project/Dockerfile .'
+                script {
+                    // Change the working directory to where your Dockerfile is located
+                    dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project') {
+                        // Execute the docker build command from this directory
+                        sh 'docker build -t devopsproject:1.0 -f Dockerfile .'
+                    }
+                }
             }
         }
+
         stage('Docker Hub') {
             steps {
                 // Assurez-vous que vous avez configuré les crédentials DockerHub dans Jenkins.
