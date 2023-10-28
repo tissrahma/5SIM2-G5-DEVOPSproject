@@ -55,7 +55,7 @@ pipeline {
                     // Change the working directory to where your Dockerfile is located
                     dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project') {
                         // Execute the docker build command from this directory
-                        sh 'docker build -t devopsproject:1.0 -f Dockerfile .'
+                        sh 'docker build -t medslama21/devopsproject:1.0 -f Dockerfile .'
                     }
                 }
             }
@@ -65,7 +65,7 @@ pipeline {
     steps {
         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: '14769075.', usernameVariable: 'medslama21')]) {
             sh "docker login -u medslama21 -p 14769075."
-            sh 'docker push devopsproject:1.0'
+            sh 'docker push medslama21/devopsproject:1.0'
         }
     }
 }
