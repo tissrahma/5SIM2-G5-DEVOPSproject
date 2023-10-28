@@ -70,11 +70,18 @@ pipeline {
     }
 }
 
-        stage('Docker-compose') {
+    stage('Docker-compose') {
             steps {
-                sh 'docker-compose up -d'  // Lancement en mode détaché
+                script {
+                    // Change the working directory to where your Dockerfile is located
+                    dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project') {
+                        // Execute the docker build command from this directory
+                        sh 'docker-compose up -d'
+                    }
+                }
             }
         }
+   
     // Ajoutez d'autres étapes de votre pipeline ici
     }
     post {
