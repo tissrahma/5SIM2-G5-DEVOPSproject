@@ -69,20 +69,20 @@ pipeline {
         }
     }
 }
-
- stage('Docker-compose') {
+stage('Docker-compose') {
     steps {
         script {
             // Change the working directory to the directory containing docker-compose.yml
             dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project') {
                 // Execute the docker-compose command
-                sh 'docker compose up -d'
+                sh 'docker-compose up -d'
             }
         }
     }
 }
 
-   
+ 
+
     // Ajoutez d'autres étapes de votre pipeline ici
     }
     post {
