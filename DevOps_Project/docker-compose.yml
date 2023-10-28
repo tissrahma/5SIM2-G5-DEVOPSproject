@@ -21,6 +21,7 @@ services:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
+    image: medslama21/devopsproject:1.0
 volumes:
   db:
   .m2:
