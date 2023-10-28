@@ -65,7 +65,7 @@ pipeline {
     steps {
         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: '14769075.', usernameVariable: 'medslama21')]) {
             sh "docker login -u medslama21 -p 14769075."
-            sh 'docker push devopsproject:1.0'
+            sh 'docker push medslama21/devopsproject:1.0'
         }
     }
 }
