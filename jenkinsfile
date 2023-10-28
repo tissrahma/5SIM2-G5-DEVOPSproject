@@ -49,9 +49,9 @@ pipeline {
                 }
             }
         }
-           stage('Docker Image') {
+        stage('Docker Image') {
             steps {
-                sh 'docker build -t devopsproject:1.0 -f DevOps_Project/Dockerfile .'
+                sh 'docker build -t devopsproject:1.0 -f Dockerfile ../.'
             }
         }
         stage('Docker Hub') {
