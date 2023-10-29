@@ -42,7 +42,7 @@ pipeline {
                   steps {
                       script {
                           sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.maven.plugin=3.3.0.1492'
-'
+
 
                       }
                   }
