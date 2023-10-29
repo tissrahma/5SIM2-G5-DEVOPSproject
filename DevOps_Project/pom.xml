@@ -79,7 +79,9 @@
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.3</version> <!-- Change the version to 3.3 -->
+                <version>3.3</version>
+                <extensions>true</extensions>
+                <!-- Change the version to 3.3 -->
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
