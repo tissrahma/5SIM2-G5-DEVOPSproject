@@ -90,7 +90,7 @@
     <repositories>
         <repository>
             <id>sonarsource-public</id>
-            <url>https://localhost:9000/repox.sonarsource.com/public</url>
+            <url>https://repox.sonarsource.com/public</url>
         </repository>
     </repositories>
 
