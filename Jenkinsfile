@@ -20,7 +20,7 @@ stages {
         steps {
             script {
                 // Cloner le référentiel GitHub en spécifiant l'URL
-                checkout([$class: 'GitSCM', branches: [[name: 'khitem5Sim2']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
+                checkout([$class: 'GitSCM', branches: [[name: 'moemenkhitem']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
             }
         }
     }
@@ -53,13 +53,7 @@ stages {
         }
     }
 
-    stage('CodeCoverage') {
-        steps {
-            bat "mvn sonar:sonar"
-        }
-    }
-}
-
+   
 
   post {
        always {
