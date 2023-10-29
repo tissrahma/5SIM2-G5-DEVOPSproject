@@ -59,6 +59,12 @@ pipeline {
         }
              
     }
+stage('CodeCoverage') {
+         steps {
+             bat "mvn sonar:sonar"
+         }
+     }
+
   post {
        always {
                     

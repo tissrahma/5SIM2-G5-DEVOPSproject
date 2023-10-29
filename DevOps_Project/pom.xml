@@ -15,8 +15,8 @@
     <description>DevOps_Project</description>
     <properties>
         <java.version>11</java.version>
-        <sonar.maven.plugin.version>3.3</sonar.maven.plugin.version>
 
+        <sonar.host.url>http://1localhost:9000/</sonar.host.url>
 
 
 
@@ -75,6 +75,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.6.0.1398</version>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.23</version>
@@ -105,11 +110,7 @@
                 <version>3.1.2</version>
                 <!-- other configuration options -->
             </plugin>
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.3</version>
-            </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
