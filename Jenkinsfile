@@ -41,17 +41,7 @@ pipeline {
                       sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml compile'
                   }
               }
-              stage('SonarQube analysis') {
-    environment {
-        scannerHome = tool 'SonarQube Scanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
-    }
-    steps {
-        withSonarQubeEnv(installationName: 'SonarQube') {
-            sh "${scannerHome}/bin/sonar-scanner -X"
-        }
-    }
-}
-	      stage('MVN SONARQUBE') {
+             stage('MVN SONARQUBE') {
                   steps {
                       script {
                           sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_22e0b819eff9a7c0299eb3ddcd2e55cf0506e6c4'
