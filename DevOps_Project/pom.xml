@@ -73,19 +73,9 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.23</version>
         </dependency>
-        <dependency>
-            <groupId>org.sonarsource.scanner.maven</groupId>
-            <artifactId>sonar-maven-plugin</artifactId>
-            <version>3.10.0.2594</version>
-        </dependency>
+
 
     </dependencies>
-    <profiles><profile>
-        <id>sonar-pre-5.6</id>
-        <properties>
-            <sonar.maven.plugin>3.3</sonar.maven.plugin>
-        </properties>
-    </profile></profiles>
     <distributionManagement>
         <repository>
             <id>deploymentRepo</id>
@@ -101,11 +91,7 @@
                 <version>3.1.2</version>
                 <!-- other configuration options -->
             </plugin>
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.10.0.2594</version>
-            </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

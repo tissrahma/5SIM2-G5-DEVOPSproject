@@ -41,7 +41,8 @@ pipeline {
               stage('MVN SONARQUBE') {
                   steps {
                       script {
-                          sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.maven.plugin=3.3.0.1492'
+                         sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_82474f4c295c337e9a7ce8fd0df4ce489beca4bc'
+
 
 
                       }
