@@ -76,21 +76,20 @@
 
 
     </dependencies>
-
+    <distributionManagement>
+        <repository>
+            <id>deploymentRepo</id>
+            <name>Nexus Repository</name>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
                 <!-- other configuration options -->
-            </plugin>
-         
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.3.0.603</version> <!-- Update to the correct version -->
             </plugin>
 
             <plugin>
