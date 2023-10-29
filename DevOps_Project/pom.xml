@@ -100,7 +100,14 @@
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.3.0.603</version> <!-- Use a version compatible with your SonarQube server -->
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <!-- Configure your test reports here -->
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
