@@ -64,7 +64,7 @@ pipeline {
             bat "mvn sonar:sonar"
         }
     }
-}
+
 
   post {
        always {
