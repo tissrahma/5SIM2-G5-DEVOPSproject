@@ -86,11 +86,13 @@
                 <version>3.1.2</version>
                 <!-- other configuration options -->
             </plugin>
+         
             <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
+                <groupId>org.codehaus.mojo</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.3.0.603</version> <!-- Replace with the actual compatible version -->
+                <version>3.3.0.603</version> <!-- Update to the correct version -->
             </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
