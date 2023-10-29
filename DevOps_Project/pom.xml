@@ -87,6 +87,13 @@
             <url>http://localhost:8081/repository/maven-releases/</url>
         </repository>
     </distributionManagement>
+    <repositories>
+        <repository>
+            <id>sonarsource-public</id>
+            <url>https://localhost:9000/repox.sonarsource.com/public</url>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
