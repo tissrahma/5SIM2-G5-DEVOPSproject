@@ -81,13 +81,12 @@
             <id>sonarsource</id>
             <url>https://plugins.sonarsource.com/maven</url>
         </repository>
-    </repositories>
-    <repositories>
         <repository>
             <id>sonarsource-releases</id>
             <url>https://repox.sonarsource.com/repository/releases</url>
         </repository>
     </repositories>
+
     <distributionManagement>
         <repository>
             <id>deploymentRepo</id>
