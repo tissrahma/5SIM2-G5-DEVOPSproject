@@ -109,7 +109,7 @@
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>5.6</version> <!-- C'est la version incorrecte -->
+                <version>3.6.0.1398</version> <!-- C'est la version incorrecte -->
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
