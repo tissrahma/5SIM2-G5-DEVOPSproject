@@ -16,7 +16,7 @@
     <properties>
         <java.version>11</java.version>
 
-        <sonar.host.url>http://localhost:9000/</sonar.host.url>
+        <sonar.exclusions>**/*.jsp</sonar.exclusions>
 
 
 
