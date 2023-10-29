@@ -16,7 +16,7 @@
     <properties>
         <java.version>11</java.version>
 
-        <sonar.host.url>localhost:9000</sonar.host.url>
+        <sonar.host.url>http://localhost:9000/</sonar.host.url>
         <sonar.log.level>DEBUG</sonar.log.level>
         <sonar.verbose>true</sonar.verbose>
         <sonar.coverage.exclusions>**/*.js</sonar.coverage.exclusions>
