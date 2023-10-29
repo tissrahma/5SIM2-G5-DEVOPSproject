@@ -16,8 +16,10 @@
     <properties>
         <java.version>11</java.version>
 
-        <sonar.exclusions>**/*.jsp</sonar.exclusions>
-
+        <sonar.host.url>localhost:9000</sonar.host.url>
+        <sonar.log.level>DEBUG</sonar.log.level>
+        <sonar.verbose>true</sonar.verbose>
+        <sonar.coverage.exclusions>**/*.js</sonar.coverage.exclusions>
 
 
     </properties>
@@ -106,11 +108,7 @@
                 <version>3.1.2</version>
                 <!-- other configuration options -->
             </plugin>
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.3</version>
-            </plugin>
+
 
 
             <plugin>
