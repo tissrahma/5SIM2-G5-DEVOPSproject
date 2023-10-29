@@ -78,6 +78,12 @@
     </dependencies>
     <repositories>
         <repository>
+            <id>sonarsource</id>
+            <url>https://plugins.sonarsource.com/maven</url>
+        </repository>
+    </repositories>
+    <repositories>
+        <repository>
             <id>sonarsource-releases</id>
             <url>https://repox.sonarsource.com/repository/releases</url>
         </repository>
@@ -109,11 +115,6 @@
                         </exclude>
                     </excludes>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.3</version>
             </plugin>
         </plugins>
     </build>
