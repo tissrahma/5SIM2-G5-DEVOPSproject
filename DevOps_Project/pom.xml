@@ -76,6 +76,12 @@
 
 
     </dependencies>
+    <repositories>
+        <repository>
+            <id>sonarsource-releases</id>
+            <url>https://repox.sonarsource.com/repository/releases</url>
+        </repository>
+    </repositories>
     <distributionManagement>
         <repository>
             <id>deploymentRepo</id>
