@@ -15,7 +15,10 @@
     <description>DevOps_Project</description>
     <properties>
         <java.version>11</java.version>
-        <sonar.maven.plugin.version>3.10.0.1492</sonar.maven.plugin.version>
+        <sonar.maven.plugin.version>3.3</sonar.maven.plugin.version>
+
+
+
 
     </properties>
 
@@ -81,14 +84,11 @@
     </dependencies>
     <repositories>
         <repository>
-            <id>sonarsource</id>
-            <url>https://plugins.sonarsource.com/maven</url>
-        </repository>
-        <repository>
             <id>sonarsource-releases</id>
             <url>https://repox.sonarsource.com/repository/releases</url>
         </repository>
     </repositories>
+
 
     <distributionManagement>
         <repository>
