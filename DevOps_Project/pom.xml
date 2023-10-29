@@ -91,20 +91,6 @@
                 <version>3.1.2</version>
                 <!-- other configuration options -->
             </plugin>
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.3</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.sonarsource.scanner.maven</groupId>
-                        <artifactId>sonar-maven-plugin</artifactId>
-                        <version>3.3</version>
-                        <scope>system</scope>
-                        <systemPath>C:\Users\DELL\Downloads\sonar-maven-plugin-3.3.jar</systemPath>
-                    </dependency>
-                </dependencies>
-            </plugin>
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
