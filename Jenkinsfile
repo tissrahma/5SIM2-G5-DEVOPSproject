@@ -29,6 +29,27 @@ pipeline {
                       sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml compile'
                   }
               }
+	        stage('Build') {
+ tools {
+        jdk "jdk11" // the name you have given the JDK installation using the JDK manager (Global Tool Configuration)
+    }
+    steps {
+        sh 'mvn compile'
+    }
+}
+stage('SonarQube analysis') {
+    tools {
+        jdk "jdk17" // the name you have given the JDK installation using the JDK manager (Global Tool Configuration)
+    }
+    environment {
+        scannerHome = tool 'SonarQube Scanner' // the name you have given the Sonar Scanner (Global Tool Configuration)
+    }
+    steps {
+        withSonarQubeEnv(installationName: 'SonarQube') {
+            sh 'mvn sonar:sonar'
+        }
+    }
+}
               stage('MVN SONARQUBE') {
                   steps {
                       script {
