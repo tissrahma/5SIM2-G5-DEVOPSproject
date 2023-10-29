@@ -101,9 +101,7 @@
         </repository>
     </distributionManagement>
     <build>
-        <defaultGoal>install</defaultGoal>
-        <!-- Source directory configuration -->
-        <sourceDirectory>src</sourceDirectory>
+        
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
