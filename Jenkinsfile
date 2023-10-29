@@ -59,7 +59,7 @@ pipeline {
         }
              
     }
-stage('CodeCoverage') {
+      stage('CodeCoverage') {
          steps {
              bat "mvn sonar:sonar"
          }
