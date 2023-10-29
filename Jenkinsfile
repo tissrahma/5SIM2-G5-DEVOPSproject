@@ -1,15 +1,12 @@
-node {
+    node {
     stage('Preparation') {
         deleteDir()  // Delete the workspace before the build starts
     }
 
     // Move the pipeline block outside the node block
     // Define the pipeline stages here
-}
-
-
-
-
+}                                    
+ 
 pipeline {
     agent any
     stages {
@@ -34,14 +31,14 @@ pipeline {
                       sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml clean'
                   }
               }
- 		
+
               stage('Maven Compile') {
                   steps {
 
                       sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml compile'
                   }
               }
-             stage('MVN SONARQUBE') {
+              stage('MVN SONARQUBE') {
                   steps {
                       script {
                           sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_22e0b819eff9a7c0299eb3ddcd2e55cf0506e6c4'
@@ -63,9 +60,7 @@ pipeline {
   post {
        always {
                     
-             junit '**/target/test-*.xml'
-
-
-                }
+            junit '**/target/surefire-reports/**/*.xml'
+}
     }
 }
