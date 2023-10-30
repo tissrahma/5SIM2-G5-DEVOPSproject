@@ -1,14 +1,11 @@
-node {
-    stage('Preparation') {
-        deleteDir()  // Delete the workspace before the build starts
-    }
 
-    // Move the pipeline block outside the node block
-    // Define the pipeline stages here
-}
 pipeline {
     agent any
     stages {
+	stage('Preparation') {
+    steps {
+        cleanWs()
+    }
         stage('Testing maven') {
             steps {
                 echo 'hhhhhhhhh'
