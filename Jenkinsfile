@@ -37,7 +37,14 @@ pipeline {
                       sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml compile'
                   }
               }
-       
+              stage('MVN SONARQUBE') {
+                  steps {
+                      script {
+
+                          sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_c92dc2807cfffb34569a83f29e08d349ef15e858'
+                      }
+                  }
+              }
 
         stage('JUNIT/MOCKITO') {
             steps {
