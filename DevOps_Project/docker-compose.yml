@@ -9,7 +9,9 @@ services:
     volumes:
       - db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=your_new_password
+      - MYSQL_DATABASE=devops
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=your_new_password
 
   DevOps_Project-backend:
     depends_on:
