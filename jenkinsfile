@@ -63,23 +63,18 @@ pipeline {
 stage('Build Angular Front-end') {
     steps {
         script {
-            // Source and initialize nvm
-            sh '''
-                export NVM_DIR="$HOME/.nvm"
-                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            '''
-
+            sh 'nvm use 16.14' 
             // Change the working directory to where your Angular project is located
             dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project_Front') {
-                sh 'nvm use 16.14'
-                sh 'ng build --prod'
+                
+                 sh 'ng build --prod'
                 // Build the Docker image for the Angular front-end
                 sh 'docker build -t medslama21/devopsproject-frontend:1.0 -f Dockerfile .'
+                
             }
         }
     }
 }
-
 
      stage('Docker Hub') {
     steps {
