@@ -2,7 +2,7 @@
 FROM nginx:latest
 
 # Copy the build files from your local machine into the image
-COPY ./dist/summer-workshop-angular /usr/share/nginx/html
+COPY dist/summer-workshop-angular /usr/share/nginx/html
 
 # Expose the port the app runs on
 EXPOSE 80
