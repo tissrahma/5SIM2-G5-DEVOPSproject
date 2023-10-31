@@ -32,7 +32,7 @@ pipeline {
        stage('MVN SONARQUBE') {
             steps {
                 script {
-                    withSonarQubeEnv('SonarCloud') {
+                    withSonarQubeEnv() {
                         sh 'mvn verify sonar:sonar -Dsonar.organization=tissrahma -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN'
                     }
                 }
