@@ -34,7 +34,7 @@ pipeline {
                   steps {
                       script {
 
-                          sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_2a867ac6669c42ce8a9fdd5705f0b9947426d4cd'
+                          sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=92faf96784635402e5fd8f434f649e6d57895ef3'
                       }
                   }
               }
