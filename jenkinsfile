@@ -68,7 +68,7 @@ stage('Build Angular Front-end') {
                 // Set the Node.js executable path
                 def nodeBinPath = '/root/.nvm/versions/node/v16.14.2/bin/node'
                 // Use the specified Node.js executable for the Angular build
-                sh "${nodeBinPath} ./node_modules/@angular/cli/bin/ng build --prod"
+                sh "${nodeBinPath} ./node_modules/@angular/cli/bin/ng build --configuration=production"
                 // Build the Docker image for the Angular front-end
                 sh 'docker build -t medslama21/devopsproject-frontend:1.0 -f Dockerfile .'
             }
