@@ -16,6 +16,7 @@
     <properties>
         <java.version>11</java.version>
         <sonar.organization>tissrahma</sonar.organization>
+		<sonar.projectKey>0a1899c0aa82ec6334a1cd89efc5bffd5d5b7df8</sonar.projectKey>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <dependencies>
