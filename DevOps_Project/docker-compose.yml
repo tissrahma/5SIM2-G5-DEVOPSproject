@@ -25,10 +25,8 @@ services:
     stdin_open: true
     tty: true
     image: medslama21/devopsproject:1.0
-  angular-frontend: # Add this new service
-    build:
-      context: ../DevOps_Project_Front  # Use the correct path to your Angular project
-      dockerfile: Dockerfile  # Use the Dockerfile you created
+  angular-frontend:
+    image: medslama21/devopsproject-frontend:1.0
     ports:
       - 80:80
 volumes:

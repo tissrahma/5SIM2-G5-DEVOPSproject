@@ -60,12 +60,26 @@ pipeline {
                 }
             }
         }
+stage('Build Angular Front-end') {
+    steps {
+        script {
+            // Change the working directory to where your Angular project is located
+            dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project_Front') {
+             
+                // Build the Docker image for the Angular front-end
+                sh 'docker build -t medslama21/devopsproject-frontend:1.0 -f Dockerfile .'
+                
+            }
+        }
+    }
+}
 
      stage('Docker Hub') {
     steps {
         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: '14769075.', usernameVariable: 'medslama21')]) {
             sh "docker login -u medslama21 -p 14769075."
             sh 'docker push medslama21/devopsproject:1.0'
+            sh 'docker push medslama21/devopsproject-frontend:1.0'
         }
     }
 }
