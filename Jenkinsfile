@@ -14,33 +14,32 @@ pipeline {
         stage('Checkout from GitHub') {
             steps {
                 script {
+                    // Cloner le référentiel GitHub en spécifiant l'URL
                     checkout([$class: 'GitSCM', branches: [[name: 'RAHMA']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
                 }
             }
         }
         stage('Maven Clean') {
             steps {
-                sh 'mvn clean'
+                sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml clean'
             }
         }
         stage('Maven Compile') {
             steps {
-                sh 'mvn compile'
+                sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml compile'
             }
         }
         stage('MVN SONARQUBE') {
             steps {
                 script {
-                    withSonarQubeEnv('SonarQubeServer') {
-                        sh 'mvn verify sonar:sonar -Dsonar.organization=tissrahma -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN'
-                    }
+                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_c92dc2807cfffb34569a83f29e08d349ef15e858'
                 }
             }
         }
         stage('JUNIT/MOCKITO') {
             steps {
                 script {
-                    sh 'mvn clean test'
+                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml clean test'
                 }
             }
         }
