@@ -63,7 +63,6 @@ pipeline {
 stage('Build Angular Front-end') {
     steps {
         script {
-            sh 'nvm use 16.14' 
             // Change the working directory to where your Angular project is located
             dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project_Front') {
                 
