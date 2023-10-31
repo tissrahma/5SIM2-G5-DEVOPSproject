@@ -30,6 +30,14 @@ pipeline {
                 sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml compile'
             }
         }
+ stage('MVN SONARQUBE') {
+                  steps {
+                      script {
+
+                          sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_2a867ac6669c42ce8a9fdd5705f0b9947426d4cd'
+                      }
+                  }
+              }
         stage('JUNIT/MOCKITO') {
             steps {
                 script {
@@ -37,14 +45,7 @@ pipeline {
                 }
             }
         }
-        stage('Nexus') {
-            steps {
-                script {
-                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml deploy'
-                }
-            }
-        }
-    }
+     }
     post {
         always {
             junit '**/target/surefire-reports/**/*.xml'
