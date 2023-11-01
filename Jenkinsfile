@@ -48,7 +48,15 @@ stage('MVN SONARQUBE') {
             }
         }
      }
+ stage('Nexus') {
+                          steps {
+                              script {
 
+                                  sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml deploy'
+                              }
+                          }
+                      }
+    }
     post {
         always {
             junit '**/target/surefire-reports/**/*.xml'
