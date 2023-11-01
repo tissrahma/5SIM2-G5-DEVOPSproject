@@ -29,16 +29,11 @@ pipeline {
                 sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml compile'
             }
         }
-stage('MVN SONARQUBE') {
-    steps {
-        script {
-            // Change to the directory where your project's pom.xml file is located
-            dir('/var/lib/jenkins/workspace/ProjetSpring/DevOps_Project') {
-                sh 'mvn verify sonar:sonar -Dsonar.organization=tissrahma -Dsonar.projectkey=tissrahma_5SIM2-G5-DEVOPSproject -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN'
-            }
-        }
+ stage('SonarQube analysis') {
+    withSonarQubeEnv() { 
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
     }
-}
+  }
 
         stage('JUNIT/MOCKITO') {
             steps {
