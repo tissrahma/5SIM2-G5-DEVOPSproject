@@ -13,9 +13,12 @@
     <version>2.1</version>
     <name>DevOps_Project</name>
     <description>DevOps_Project</description>
-    <properties>
-        <java.version>11</java.version>
-    </properties>
+   <properties>
+<java.version>11</java.version>
+<sonar.organization>tissrahma</sonar.organization>
+<sonar.projectKey>tissrahma_5SIM2-G5-DEVOPSproject</sonar.projectKey>
+<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+</properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
