@@ -46,6 +46,13 @@ stage('MVN SONARQUBE') {
                 }
             }
         }
+   stage('Nexus') {
+            steps {
+                script {
+                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml deploy'
+                }
+            }
+        }
      }
 post {
     always {
