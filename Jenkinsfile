@@ -39,16 +39,14 @@ stage('MVN SONARQUBE') {
         }
     }
 }
-
-
-        stage('JUNIT/MOCKITO') {
+    stage('JUNIT/MOCKITO') {
             steps {
                 script {
                     sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml clean test'
                 }
             }
         }
-    }
+     }
     post {
         always {
             junit '**/target/surefire-reports/**/*.xml'
