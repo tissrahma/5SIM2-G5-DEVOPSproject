@@ -47,9 +47,9 @@ stage('MVN SONARQUBE') {
             }
         }
      }
- post {
+post {
     always {
-        junit '**/target/site/surefire-report.html'
+        junit '**/target/surefire-reports/**/*.xml'
     }
 }
 
