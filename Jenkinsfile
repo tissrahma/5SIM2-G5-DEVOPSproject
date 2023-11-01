@@ -18,6 +18,7 @@ pipeline {
                     checkout([$class: 'GitSCM', branches: [[name: 'khitem5Sim2']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']])
 
 
+
                 }
             }
         }
