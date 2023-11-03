@@ -12,8 +12,7 @@ services:
       - MYSQL_DATABASE=devops
       - MYSQL_USER=root
       - MYSQL_PASSWORD=your_new_password
-
-  devops_project-backend:
+  devops_project:
     depends_on:
       - mysqldb
     build: ./
@@ -26,10 +25,6 @@ services:
     tty: true
     image: rahmatiss5sim2/devopsproject:1.0
 
-  angular-frontend:
-    image: rahmatiss5sim2/devopsproject-frontend:1.0
-    ports:
-      - 80:80
 
 volumes:
   db:
