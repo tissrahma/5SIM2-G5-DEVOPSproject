@@ -32,6 +32,7 @@ public class OperatorTest {
 
     @Test
     public void testAddOperator() {
+        //njareb fil coverage
         Operator operatorToAdd = new Operator();
         operatorToAdd.setIdOperateur(1L);
         operatorToAdd.setFname("John");
@@ -44,6 +45,9 @@ public class OperatorTest {
 
         assertEquals(operatorToAdd, savedOperator);
     }
+    //njareb fil coverage
+    //njareb fil coverage //njareb fil coverage //njareb fil coverage //njareb fil coverage //njareb fil coverage //njareb fil coverage
+
 
     @Test
     public void testRetrieveOperator() {
