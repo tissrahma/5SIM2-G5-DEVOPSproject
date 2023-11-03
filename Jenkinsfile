@@ -16,9 +16,6 @@ pipeline {
                 script {
                     // Cloner le référentiel GitHub en spécifiant l'URL
                     checkout([$class: 'GitSCM', branches: [[name: 'khitem5Sim2']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
-
-
-
                 }
             }
         }
@@ -32,15 +29,13 @@ pipeline {
                 sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml compile'
             }
         }
-       stage('MVN SONARQUBE') {
-                  steps {
-                      script {
-
-                          sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_5819c0b9106fc11a111f8aadefff70940c5726ec'
-                      }
-                  }
-              
-
+        stage('MVN SONARQUBE') {
+            steps {
+                script {
+                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_942d4d1ba1a4b6e5dae203ca2afa2d1f050555f8'
+                }
+            }
+        }
         stage('JUNIT/MOCKITO') {
             steps {
                 script {
@@ -48,7 +43,7 @@ pipeline {
                 }
             }
         }
-     
+    }
     post {
         always {
             junit '**/target/surefire-reports/**/*.xml'
