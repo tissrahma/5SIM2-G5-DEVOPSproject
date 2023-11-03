@@ -71,6 +71,7 @@ stage('Docker-compose') {
         }
     }
      }
+	 }
 post {
     always {
         junit '**/target/surefire-reports/**/*.xml'
