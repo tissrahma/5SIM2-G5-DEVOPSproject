@@ -36,10 +36,11 @@ pipeline {
                   steps {
                       script {
 
-                          sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_5819c0b9106fc11a111f8aadefff70940c5726ec'
+                          sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_5819c0b9106fc11a111f8aadefff70940c5726ec'
                       }
                   }
-              }
+              
+
         stage('JUNIT/MOCKITO') {
             steps {
                 script {
