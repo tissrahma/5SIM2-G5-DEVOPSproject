@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+	stage('Delete Git Index') {
+    steps {
+        sh 'rm -f /var/lib/jenkins/workspace/ProjetSpring/.git/index'
+    }
+}
         stage('Preparation') {
             steps {
                 cleanWs()
