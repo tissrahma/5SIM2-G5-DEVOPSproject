@@ -46,13 +46,32 @@ stage('MVN SONARQUBE') {
                 }
             }
         }
-   stage('Nexus') {
+  
+       stage('Docker Image') {
             steps {
                 script {
-                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml deploy'
+                    dir('/var/lib/jenkins/workspace/ProjetSpring/DevOps_Project') {
+                        sh 'docker build -t rahmaTiss5sim2/devopsproject:1.0 -f Dockerfile .'
+                    }
                 }
             }
         }
+   stage('Docker Hub') {
+    steps {
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'Valentino10', usernameVariable: 'rahma09')]) {
+            sh "docker login -u rahma09 -p Valentino10"
+            sh 'docker push rahmaTiss5sim2/devopsproject:1.0'
+        }
+    }
+}
+stage('Docker-compose') {
+    steps {
+        script {
+            dir('/var/lib/jenkins/workspace/ProjetSpring/DevOps_Project') {
+                sh 'docker compose up -d'
+            }
+        }
+    }
      }
 post {
     always {
