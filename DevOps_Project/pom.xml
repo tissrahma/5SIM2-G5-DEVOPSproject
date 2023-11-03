@@ -15,9 +15,7 @@
     <description>DevOps_Project</description>
    <properties>
 <java.version>11</java.version>
-<sonar.organization>mathlouthikhitem</sonar.organization>
-<sonar.projectKey>mathlouthikhitem_5SIM2-G5-DEVOPSproject</sonar.projectKey>
-<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
 </properties>
     <dependencies>
         <dependency>
