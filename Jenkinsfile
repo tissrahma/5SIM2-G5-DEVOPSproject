@@ -32,16 +32,14 @@ pipeline {
                 sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml compile'
             }
         }
-        stage('MVN SONARQUBE') {
-            steps {
-                script {
-                    // Change to the directory where your project's pom.xml file is located
-                    dir('/var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project') {
-                        sh 'mvn verify sonar:sonar -Dsonar.organization=mathlouthikhitem -Dsonar.projectKey=mathlouthikhitem_5SIM2-G5-DEVOPSproject -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=e0cfb0d60a40831ea64741a2a3435df2b460a806'
-                    }
-                }
-            }
-        }
+       stage('MVN SONARQUBE') {
+                  steps {
+                      script {
+
+                          sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_5819c0b9106fc11a111f8aadefff70940c5726ec'
+                      }
+                  }
+              }
         stage('JUNIT/MOCKITO') {
             steps {
                 script {
@@ -49,14 +47,7 @@ pipeline {
                 }
             }
         }
-        stage('Nexus') {
-            steps {
-                script {
-                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml deploy'
-                }
-            }
-        }
-    }
+     
     post {
         always {
             junit '**/target/surefire-reports/**/*.xml'
