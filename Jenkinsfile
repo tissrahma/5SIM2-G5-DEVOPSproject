@@ -51,6 +51,26 @@ pipeline {
                 }
             }
         }
+  stage('Docker Image') {
+            steps {
+                script {
+                    // Change the working directory to where your Dockerfile is located
+                    dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project') {
+                        // Execute the docker build command from this directory
+                        sh 'docker build -t khitemmathlouthi/devopsproject:1.0 -f Dockerfile .'
+                    }
+                }
+            }
+        }
+  stage('Docker Hub') {
+    steps {
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: '14769075.', usernameVariable: 'khitemmathlouthi')]) {
+            sh "docker login -u khitemmathlouthi -p 14769075."
+            sh 'docker push khitemmathlouthi/devopsproject:1.0'
+            sh 'docker push khitemmathlouthi/devopsproject-frontend:1.0'
+        }
+    }
+}
     }
 
     post {

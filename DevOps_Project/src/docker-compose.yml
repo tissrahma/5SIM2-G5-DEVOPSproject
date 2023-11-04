@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  mysqldb:
+    image: mysql:latest
+    restart: unless-stopped
+    ports:
+      - 3307:3306
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=devops
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=StrongP@sswOrd123
+
+  DevOps_Project-backend:
+    depends_on:
+      - mysqldb
+    build: ./
+    restart: on-failure
+    ports:
+      - 8082:8082
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+    image: khitemmathlouthi/devopsproject:1.0
+  angular-frontend:
+    image: khitemmathlouthi/devopsproject-frontend:1.0
+    ports:
+      - 80:80
+volumes:
+  db:
+  .m2:
