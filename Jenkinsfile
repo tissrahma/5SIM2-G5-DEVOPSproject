@@ -1,21 +1,5 @@
 pipeline {
     agent any
-    stages {
-	stage('Delete Git Index') {
-    steps {
-        sh 'rm -f /var/lib/jenkins/workspace/ProjetSpring/.git/index'
-    }
-}
-        stage('Preparation') {
-            steps {
-                cleanWs()
-            }
-        }
-        stage('Testing maven') {
-            steps {
-                echo 'hhhhhhhhh'
-            }
-        }
         stage('Checkout from GitHub') {
             steps {
                 script {
@@ -54,7 +38,7 @@ stage('MVN SONARQUBE') {
             steps {
                 script {
  
-                    dir('/var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/') {
+                    dir('/var/lib/jenkins/workspace/ProjetSpring/DevOps_Project') {
                         sh 'docker build -t rahmatiss5sim2/devopsproject:1.0 -f Dockerfile .'
                     }
                 }
