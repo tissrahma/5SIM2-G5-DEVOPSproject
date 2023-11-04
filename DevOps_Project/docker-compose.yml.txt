@@ -1,20 +1,21 @@
 version: '3'
 
 services:
-  sonar-scanner:
-    image: sonarsource/sonar-scanner-cli:latest
+  sonarqube:
+    image: sonarqube:latest
+    ports:
+      - "9000:9000"
+      - "9092:9092"
     networks:
       - devops-network
     environment:
-      - SONAR_HOST_URL=https://sonarcloud.io
-      - SONAR_LOGIN=24825fffcf2d6d4849aa980394db05c8d0648afb
+      - SONARQUBE_JDBC_USERNAME=admin
+      - SONARQUBE_JDBC_PASSWORD=rahma
     volumes:
-      - /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project
-
-networks:
-  devops-network:
-    driver: bridge
- nexus:
+      - SonarQube_data:/opt/SonarQube/data
+      - SonarQube_extensions:/opt/SonarQube/extensions
+      - SonarQube_logs:/opt/SonarQube/logs
+  nexus:
     image: sonatype/nexus3:latest
     ports:
       - "8081:8081"
@@ -32,11 +33,14 @@ mysql:
       - MYSQL_PASSWORD=your_new_password
     volumes:
       - mysql-data:/var/lib/mysql
+
 networks:
   devops-network:
     driver: bridge
 
 volumes:
-sonar-scanner-data:
+  SonarQube_data:
+  SonarQube_extensions:
+  SonarQube_logs:
+  nexus-data:
   mysql-data:
-nexus-data:
