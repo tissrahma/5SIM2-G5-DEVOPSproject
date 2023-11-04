@@ -10,11 +10,8 @@ services:
       - devops-network
     environment:
       - SONARQUBE_JDBC_USERNAME=admin
-      - SONARQUBE_JDBC_PASSWORD=rahma
-    volumes:
-      - SonarQube_data:/opt/SonarQube/data
-      - SonarQube_extensions:/opt/SonarQube/extensions
-      - SonarQube_logs:/opt/SonarQube/logs
+      - SONARQUBE_JDBC_PASSWORD=sonar
+
   nexus:
     image: sonatype/nexus3:latest
     ports:
@@ -23,11 +20,13 @@ services:
       - devops-network
     volumes:
       - nexus-data:/nexus-data
-mysql:
+
+  mysql:
     image: mysql:latest
     networks:
       - devops-network
     environment:
+      - MYSQL_ROOT_PASSWORD=root_password
       - MYSQL_DATABASE=devops
       - MYSQL_USER=root
       - MYSQL_PASSWORD=your_new_password
@@ -39,8 +38,5 @@ networks:
     driver: bridge
 
 volumes:
-  SonarQube_data:
-  SonarQube_extensions:
-  SonarQube_logs:
   nexus-data:
   mysql-data:
