@@ -54,7 +54,7 @@ stage('MVN SONARQUBE') {
             steps {
                 script {
  
-                    dir('/var/lib/jenkins/workspace/ProjetSpring/DevOps_Project') {
+                    dir('/var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/') {
                         sh 'docker build -t rahmatiss5sim2/devopsproject:1.0 -f Dockerfile .'
                     }
                 }
