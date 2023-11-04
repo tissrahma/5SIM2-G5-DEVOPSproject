@@ -1,6 +1,6 @@
 pipeline {
-	stages{
     agent any
+	stages{
         stage('Checkout from GitHub') {
             steps {
                 script {
