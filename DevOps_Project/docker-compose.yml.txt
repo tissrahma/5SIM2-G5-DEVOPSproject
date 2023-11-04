@@ -1,31 +1,42 @@
-version: '3.8'
+version: '3'
 
 services:
-  mysqldb:
-    image: mysql:latest
-    restart: unless-stopped
-    ports:
-      - 3307:3306
+  sonar-scanner:
+    image: sonarsource/sonar-scanner-cli:latest
+    networks:
+      - devops-network
+    environment:
+      - SONAR_HOST_URL=https://sonarcloud.io
+      - SONAR_LOGIN=24825fffcf2d6d4849aa980394db05c8d0648afb
     volumes:
-      - db:/var/lib/mysql
+      - /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project
+
+networks:
+  devops-network:
+    driver: bridge
+ nexus:
+    image: sonatype/nexus3:latest
+    ports:
+      - "8081:8081"
+    networks:
+      - devops-network
+    volumes:
+      - nexus-data:/nexus-data
+mysql:
+    image: mysql:latest
+    networks:
+      - devops-network
     environment:
       - MYSQL_DATABASE=devops
       - MYSQL_USER=root
       - MYSQL_PASSWORD=your_new_password
-  devops_project:
-    depends_on:
-      - mysqldb
-    build: ./
-    restart: on-failure
-    ports:
-      - 8082:8082
     volumes:
-      - .m2:/root/.m2
-    stdin_open: true
-    tty: true
-    image: rahmatiss5sim2/devopsproject:1.0
-
+      - mysql-data:/var/lib/mysql
+networks:
+  devops-network:
+    driver: bridge
 
 volumes:
-  db:
-  .m2:
+sonar-scanner-data:
+  mysql-data:
+nexus-data:
