@@ -16,7 +16,7 @@ services:
   DevOps_Project-backend:
     depends_on:
       - mysqldb
-    build: ./
+    build: src
     restart: on-failure
     ports:
       - 8082:8082
