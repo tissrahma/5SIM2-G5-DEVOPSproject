@@ -44,7 +44,6 @@ pipeline {
                 }
             }
         }
-    }
  stage('Nexus') {
             steps {
                 script {
@@ -52,6 +51,8 @@ pipeline {
                 }
             }
         }
+    }
+
     post {
         always {
             junit '**/target/surefire-reports/**/*.xml'
