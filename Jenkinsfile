@@ -64,11 +64,10 @@ pipeline {
         }
   stage('Docker Hub') {
     steps {
-         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                        def customImage = docker.build("khitemmathlouthi/devopsproject:1.0")
-                        customImage.push()
-           
-        }
+     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'khitem1234', usernameVariable: 'khitem.mathlouthi@esprit.tn')]) {
+    sh "docker login -u $khitem.mathlouthi@esprit.tn -p $khitem1234"
+    sh 'docker push khitem/devopsproject:1.0'
+}
     }
 }
     }
