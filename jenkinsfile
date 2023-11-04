@@ -70,7 +70,17 @@ pipeline {
 //         }
 //     }
 // }
-
+ stage('Docker Image') {
+            steps {
+                script {
+                    // Change the working directory to where your Dockerfile is located
+                    dir('/var/lib/jenkins/workspace/DevopsSpring/DevOps_Project') {
+                        // Execute the docker build command from this directory
+                        sh 'docker build -t moemen99/devopsproject:1.0 -f Dockerfile .'
+                    }
+                }
+            }
+        }
      stage('Docker Hub') {
     steps {
         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'Bakkas234', usernameVariable: 'moemen99')]) {
@@ -92,17 +102,7 @@ stage('Docker-compose') {
     }
 }
 
- stage('Docker Image') {
-            steps {
-                script {
-                    // Change the working directory to where your Dockerfile is located
-                    dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project') {
-                        // Execute the docker build command from this directory
-                        sh 'docker build -t moemen99/devopsproject:1.0 -f Dockerfile .'
-                    }
-                }
-            }
-        }
+
 
     // Ajoutez d'autres étapes de votre pipeline ici
     }
