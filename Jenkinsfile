@@ -67,7 +67,7 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: '14769075.', usernameVariable: 'khitemmathlouthi')]) {
             sh "docker login -u khitemmathlouthi -p 14769075."
             sh 'docker push khitemmathlouthi/devopsproject:1.0'
-            sh 'docker push khitemmathlouthi/devopsproject-frontend:1.0'
+           
         }
     }
 }
