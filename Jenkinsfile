@@ -66,7 +66,7 @@ pipeline {
     steps {
         withCredentials([usernamePassword(credentialsId: '2dc5dd19-7bfd-429e-9078-864ae637ecc1', passwordVariable: 'khitem1234', usernameVariable: 'khitem.mathlouthi@esprit.tn')]) {
             sh "docker login -u khitem.mathlouthi@esprit.tn -p khitem1234"
-            sh 'docker push khitem.mathlouthi@esprit.tn/devopsproject:1.0'
+            sh 'docker push khitemmathlouthi/devopsproject:1.0'
            
         }
     }
