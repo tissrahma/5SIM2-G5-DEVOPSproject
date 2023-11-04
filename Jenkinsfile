@@ -63,7 +63,7 @@ stage('MVN SONARQUBE') {
     steps {
         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'Valentino10', usernameVariable: 'rahma09')]) {
             sh "docker login -u rahma09 -p Valentino10"
-            sh 'docker push rahmaTiss5sim2/devopsproject:1.0'
+            sh 'docker push rahmatiss5sim2/devopsproject:1.0'
         }
     }
 }
