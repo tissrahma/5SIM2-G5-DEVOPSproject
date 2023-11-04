@@ -50,15 +50,16 @@ stage('MVN SONARQUBE') {
             }
         }
   
-    stage('Docker Image') {
-    steps {
-        script {
-            dir('/var/lib/jenkins/workspace/ProjetSpring/DevOps_Project') {
-                sh 'docker build -t rahmatiss5sim2/devopsproject:1.0 -f Dockerfile .'
+  stage('Docker Image') {
+            steps {
+                script {
+ 
+                    dir('/var/lib/jenkins/workspace/ProjetSpring/DevOps_Project') {
+                        sh 'docker build -t rahmatiss5sim2/devopsproject:1.0 -f Dockerfile .'
+                    }
+                }
             }
         }
-    }
-}
    stage('Docker Hub') {
     steps {
         withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'Valentino10', usernameVariable: 'rahma09')]) {
