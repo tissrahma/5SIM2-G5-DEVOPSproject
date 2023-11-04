@@ -54,6 +54,39 @@ pipeline {
                               }
                           }
                       }
+//                       stage('Build Angular Front-end') {
+//     steps {
+//         script {
+//             // Change the working directory to where your Angular project is located
+//             dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project_Front') {
+//                 sh' npm install'
+//                  sh 'ng build --configuration=production'
+//                 // Build the Docker image for the Angular front-end
+//                 sh 'docker build -t medslama21/devopsproject-frontend:1.0 -f Dockerfile .'
+                
+//             }
+//         }
+//     }
+// }
+                        stage('Docker Hub') {
+    steps {
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'Bakkas234', usernameVariable: 'moemen99')]) {
+            sh "docker login -u moemen99 -p Bakkas234"
+            sh 'docker push moemen99/devopsproject:1.0'
+            // sh 'docker push moemen99/devopsproject-frontend:1.0'
+        }
+    }
+}
+stage('Docker-compose') {
+    steps {
+        script {
+            // Change the working directory to the directory containing docker-compose.yml
+            dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project') {
+                // Execute the docker-compose command
+                sh 'docker compose up -d'
+            }
+        }
+    }
     }
   post {
        always {
