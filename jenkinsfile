@@ -27,7 +27,13 @@ pipeline {
                 sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml compile'
             }
         }
-     
+        stage('JUNIT/MOCKITO') {
+            steps {
+                script {
+                    sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml clean test'
+                }
+            }
+        }
         stage('MVN SONARQUBE') {
             steps {
                 script {
@@ -35,14 +41,7 @@ pipeline {
                 }
             }
         }
-    stage('JUNIT/MOCKITO') {
-            steps {
-                script {
-                    sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml clean test'
-                }
-            }
-        }
-       
+
         stage('Nexus') {
             steps {
                 script {
@@ -61,43 +60,40 @@ pipeline {
                 }
             }
         }
-stage('Build Angular Front-end') {
-    steps {
-        script {
-            // Change the working directory to where your Angular project is located
-            dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project_Front') {
-                sh' npm install'
-                 sh 'ng build --configuration=production'
-                // Build the Docker image for the Angular front-end
-                sh 'docker build -t medslama21/devopsproject-frontend:1.0 -f Dockerfile .'
-                
+        stage('Build Angular Front-end') {
+            steps {
+                script {
+                    // Change the working directory to where your Angular project is located
+                    dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project_Front') {
+                        sh' npm install'
+                        sh 'ng build --configuration=production'
+                        // Build the Docker image for the Angular front-end
+                        sh 'docker build -t medslama21/devopsproject-frontend:1.0 -f Dockerfile .'
+                    }
+                }
             }
         }
-    }
-}
 
-     stage('Docker Hub') {
-    steps {
-        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: '14769075.', usernameVariable: 'medslama21')]) {
-            sh "docker login -u medslama21 -p 14769075."
-            sh 'docker push medslama21/devopsproject:1.0'
-            sh 'docker push medslama21/devopsproject-frontend:1.0'
-        }
-    }
-}
-stage('Docker-compose') {
-    steps {
-        script {
-            // Change the working directory to the directory containing docker-compose.yml
-            dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project') {
-                // Execute the docker-compose command
-                sh 'docker compose up -d'
+        stage('Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: '14769075.', usernameVariable: 'medslama21')]) {
+                    sh 'docker login -u medslama21 -p 14769075.'
+                    sh 'docker push medslama21/devopsproject:1.0'
+                    sh 'docker push medslama21/devopsproject-frontend:1.0'
+                }
             }
         }
-    }
-}
-
- 
+        stage('Docker-compose') {
+            steps {
+                script {
+                    // Change the working directory to the directory containing docker-compose.yml
+                    dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project') {
+                        // Execute the docker-compose command
+                        sh 'docker compose up -d'
+                    }
+                }
+            }
+        }
 
     // Ajoutez d'autres étapes de votre pipeline ici
     }
