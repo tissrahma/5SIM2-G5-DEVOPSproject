@@ -5,8 +5,7 @@ FROM openjdk:11
 EXPOSE 8082
 
 # Copy the JAR file from the project's target directory to the Docker image
-ARG JAR_FILE=target/*.jar
-ADD  ${JAR_FILE} DevOps_Project-2.1.jar
+ADD  /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/target/DevOps_Project-2.1.jar DevOps_Project-2.1.jar
 
 # Command to run the Spring Boot application
 ENTRYPOINT ["java", "-jar", "/DevOps_Project-2.1.jar"]
