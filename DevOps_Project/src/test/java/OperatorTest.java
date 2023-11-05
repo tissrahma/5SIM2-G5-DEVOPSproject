@@ -45,6 +45,21 @@ public class OperatorTest {
 
         assertEquals(operatorToAdd, savedOperator);
     }
+    @Test
+    public void testAddOperator1() {
+        //njareb fil coverage
+        Operator operatorToAdd = new Operator();
+        operatorToAdd.setIdOperateur(1L);
+        operatorToAdd.setFname("John");
+        operatorToAdd.setLname("Doe");
+        operatorToAdd.setPassword("password");
+
+        when(operatorRepository.save(operatorToAdd)).thenReturn(operatorToAdd);
+
+        Operator savedOperator = operatorService.addOperator(operatorToAdd);
+
+        assertEquals(operatorToAdd, savedOperator);
+    }
     //njareb fil coverage
     //njareb fil coverage //njareb fil coverage //njareb fil coverage //njareb fil coverage //njareb fil coverage //njareb fil coverage
 
