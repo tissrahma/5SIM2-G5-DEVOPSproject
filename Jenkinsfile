@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Maven Compile') {
             steps {
-                sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml install'
+                sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml compile'
             }
         }
   stage('MVN SONARQUBE') {
