@@ -10,7 +10,7 @@ services:
       - db:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=devops
-      - MYSQL_ALLOW_EMPTY_PASSWORD
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
 
 
   DevOps_Project-backend:
