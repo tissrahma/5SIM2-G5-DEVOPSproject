@@ -83,7 +83,8 @@ pipeline {
 
     post {
         always {
-          junit '/var/lib/jenkins/workspace/ProjetSpring1/tests/results/*.xml'
+          junit 'target/surefire-reports/*.xml'
+           jacoco execPattern: 'target/jacoco.exec'
 
 
 		
