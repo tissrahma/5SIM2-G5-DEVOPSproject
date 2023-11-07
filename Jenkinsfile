@@ -34,6 +34,17 @@ pipeline {
                 }
             }
         }
+    stage('Docker Image') {
+            steps {
+                script {
+
+                    dir('/var/lib/jenkins/workspace/ProjetSpring/DevOps_Project') {
+          
+                        sh 'docker build -t rahma09/devopsproject:1.0 -f Dockerfile .'
+                    }
+                }
+            }
+        }
 }
 	 
 post {
