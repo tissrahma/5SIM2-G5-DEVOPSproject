@@ -53,6 +53,39 @@ pipeline {
                         }
                     }
                 }
+                stage('Docker Image') {
+                            steps {
+                                script {
+                                    // Change the working directory to where your Dockerfile is located
+                                    dir('/var/lib/jenkins/workspace/ArjebDevops/DevOps_Project') {
+                                        // Execute the docker build command from this directory
+                                        sh 'docker build -t arjeb/devopsproject:1.0 -f Dockerfile .'
+                                    }
+                                }
+                            }
+                        }
+
+                        stage('Docker Hub') {
+                            steps {
+                                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'ahmedahmed.', usernameVariable: 'arjeb')]) {
+                                    sh "docker login -u arjeb -p ahmedahmed"
+                                    sh 'docker push arjeb/devopsproject:1.0'
+
+                                }
+                            }
+                        }
+
+                stage('Docker-compose') {
+                    steps {
+                        script {
+                            // Change the working directory to the directory containing docker-compose.yml
+                            dir('/var/lib/jenkins/workspace/ArjebDevops/DevOps_Project') {
+                                // Execute the docker-compose command
+                                sh 'docker compose up -d'
+                            }
+                        }
+                    }
+                }
 
     }
   post {
