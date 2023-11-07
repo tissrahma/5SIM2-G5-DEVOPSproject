@@ -67,7 +67,7 @@ pipeline {
 
                         stage('Docker Hub') {
                             steps {
-                                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'ahmedahmed.', usernameVariable: 'arjeb')]) {
+                                withCredentials([usernamePassword(credentialsId: 'dockerhubcredentialsahmed', passwordVariable: 'ahmedahmed.', usernameVariable: 'arjeb')]) {
                                     sh "docker login -u arjeb -p ahmedahmed"
                                     sh 'docker push arjeb/devopsproject:1.0'
 
