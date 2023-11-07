@@ -1,16 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Preparation') {
-            steps {
-                cleanWs()
-            }
-        }
         stage('Testing maven') {
             steps {
                 echo 'hhhhhhhhh'
             }
         }
+
         stage('Checkout from GitHub') {
             steps {
                 script {
@@ -71,11 +67,24 @@ pipeline {
         }
     }
 }
+ stage('Docker-compose') {
+            steps {
+                script {
+                    // Change the working directory to the directory containing docker-compose.yml
+                    dir('/var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project') {
+                        // Execute the docker-compose command
+                        sh 'docker compose up -d'
+                    }
+                }
+            }
+        }
+
     }
 
     post {
         always {
                 junit '**/target/surefire-reports/**/*.xml'
+		
 
 
         }
