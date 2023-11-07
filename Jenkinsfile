@@ -83,7 +83,8 @@ pipeline {
 
     post {
         always {
-          junit 'tests/results/*.xml'
+          junit '/var/lib/jenkins/workspace/ProjetSpring1/tests/results/*.xml'
+
 
 		
 
