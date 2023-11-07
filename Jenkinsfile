@@ -32,7 +32,7 @@ pipeline {
         stage('MVN SONARQUBE') {
             steps {
                 script {
-                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_8c6a84ee28cd2fd1185f784ccc194d8e9706fcd7'
+                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_af569a1165a66c41041352adf419e5a7af9acef7'
                 }
             }
         }
