@@ -25,10 +25,7 @@ services:
     stdin_open: true
     tty: true
     image: khitemmathlouthi/devopsproject:1.0
-  angular-frontend:
-    image: khitemmathlouthi/devopsproject-frontend:1.0
-    ports:
-      - 80:80
+ 
 volumes:
   db:
   .m2:
