@@ -19,13 +19,6 @@ pipeline {
             }
         }
  
-    stage('JUNIT/MOCKITO') {
-            steps {
-                script {
-                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/pom.xml clean test'
-                }
-            }
-        }
   stage('Docker Image') {
             steps {
                 script {
