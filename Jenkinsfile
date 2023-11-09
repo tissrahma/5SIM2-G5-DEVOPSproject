@@ -1,6 +1,12 @@
 pipeline {
     agent any
 	stages{
+stage('Prepare Workspace') {
+    steps {
+        // Copy the JAR file into the workspace
+        sh 'cp /var/lib/jenkins/workspace/ProjetSpring/DevOps_Project/target/DevOps_Project-2.1.jar .'
+    }
+}
         stage('Checkout from GitHub') {
             steps {
                 script {
