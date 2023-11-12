@@ -99,6 +99,21 @@ pipeline {
                 }
             }
         }
+        stage('Email Notificatuon'){
+            steps {
+                emailext body: '''<!DOCTYPE html>
+<html>
+<head>
+    <title>$PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS</title>
+</head>
+<body>
+    <h1>$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS</h1>
+    <p>Check console output at <a href="$BUILD_URL">$BUILD_URL</a> to view the results.</p>
+</body>
+</html>
+''', subject: 'Builds Of jenkins', to: 'medslama.1945@gmail.com'
+            }
+        }
 
     // Ajoutez d'autres étapes de votre pipeline ici
     }
