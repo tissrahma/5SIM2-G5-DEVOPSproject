@@ -24,7 +24,7 @@ dir('DevOps_Project') {
         }
         stage('Maven Compile') {
             steps {
-                sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml compile'
+                sh 'mvn -f /home/vagrant/.jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml compile'
             }
         }
         stage('MVN SONARQUBE') {
