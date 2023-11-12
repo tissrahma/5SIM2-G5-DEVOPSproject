@@ -17,8 +17,9 @@ pipeline {
         }
         stage('Maven Clean') {
             steps {
-                sh 'ls'
-                sh 'mvn -f /DevOps_Project/pom.xml clean'
+dir('DevOps_Project') {
+                        sh 'mvn clean'
+                    }
             }
         }
         stage('Maven Compile') {
