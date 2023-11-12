@@ -34,6 +34,11 @@ pipeline {
                 }
             }
         }
+        stage('Jacoco Coverage Report') {
+            steps {
+                sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml jacoco:report'
+            }
+        }
         stage('MVN SONARQUBE') {
             steps {
                 script {
