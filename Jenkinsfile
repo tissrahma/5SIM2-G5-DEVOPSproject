@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     // Cloner le référentiel GitHub en spécifiant l'URL
-                    checkout([$class: 'GitSCM', branches: [[name: 'khitem5sim2devops']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
+                    checkout([$class: 'GitSCM', branches: [[name: 'khitem5Sim2']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
                 }
             }
         }
@@ -67,7 +67,7 @@ pipeline {
         }
     }
 }
- stage('Docker-composee') {
+ stage('Docker-compose') {
             steps {
                 script {
                     // Change the working directory to the directory containing docker-compose.yml
