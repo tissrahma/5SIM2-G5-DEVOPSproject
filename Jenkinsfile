@@ -17,6 +17,7 @@ pipeline {
         }
         stage('Maven Clean') {
             steps {
+                sh 'ls /var/lib/jenkins/workspace/ProjetSpring1'
                 sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml clean'
             }
         }
