@@ -67,7 +67,7 @@ pipeline {
         }
     }
 }
- stage('Docker-composee') {
+ stage('Docker-compose') {
             steps {
                 script {
                     // Change the working directory to the directory containing docker-compose.yml
