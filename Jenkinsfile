@@ -84,16 +84,5 @@ pipeline {
 
     }
 
-    post {
-        always {
-	
-junit '**/target/surefire-reports/**/*.xml'
-        archiveArtifacts 'target/surefire-reports/**/*.xml'
 
-
-		
-
-
-        }
-    }
 }
