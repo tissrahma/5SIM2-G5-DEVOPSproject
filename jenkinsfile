@@ -13,8 +13,7 @@ pipeline {
                     try {
                     checkout([$class: 'GitSCM', branches: [[name: 'MohamedSlama5emeSIM2A']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
                     }catch(Exception e) {
-    currentBuild.result = 'FAILURE'
-    error("Failed to checkout from GitHub: ${e.message}")
+    error("Failed zzzzz to checkout from GitHub: ${e.message}")
     emailext subject: 'Builds Of Jenkins',
              body: '''<!DOCTYPE html>
                      <!-- Your email content here -->
