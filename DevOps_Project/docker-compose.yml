@@ -1,11 +1,11 @@
-  version: "3.8"
+version: "3.8"
 
 services:
   mysqldb:
     image: mysql:latest
     restart: unless-stopped
     ports:
-      - 3307:3306
+      - "3307:3306"
     volumes:
       - db:/var/lib/mysql
     environment:
@@ -15,10 +15,10 @@ services:
   DevOps_Project-backend:
     depends_on:
       - mysqldb
-    build: src
+    build: ./src
     restart: on-failure
     ports:
-      - 8082:8082
+      - "8082:8082"
     volumes:
       - .m2:/root/.m2
     stdin_open: true
