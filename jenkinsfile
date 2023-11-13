@@ -108,14 +108,14 @@ pipeline {
                 }
             }
         }
-     stage('Email Notification') {
+       stage('Email Notification') {
             steps {
                 script {
                     def buildStatus = currentBuild.currentResult.toString()
                     def buildColor = (buildStatus == 'SUCCESS') ? 'green' : 'red'
                     def subject = "Build Status: ${buildStatus}"
 
-                    def emailContent = """
+                    def emailContent = '''
                         <!DOCTYPE html>
                         <html>
                         <head>
@@ -147,18 +147,18 @@ pipeline {
                         </head>
                         <body>
                             <div class="container">
-                                <h1 style="color: ${buildColor}">$PROJECT_NAME - Build # $BUILD_NUMBER - $buildStatus</h1>
-                                <p>Check console output at <a class="link" href="$BUILD_URL">$BUILD_URL</a> to view the results.</p>
+                                <h1 style="color: ${buildColor}">${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${buildStatus}</h1>
+                                <p>Check console output at <a class="link" href="${BUILD_URL}">${BUILD_URL}</a> to view the results.</p>
                             </div>
                         </body>
                         </html>
-                    """
+                    '''
                     emailext subject: subject, body: emailContent, to: 'medslama.1945@gmail.com'
                 }
             }
         }
-    
 
+    // Ajoutez d'autres étapes de votre pipeline ici
     }
     post {
         always {
