@@ -62,7 +62,7 @@ stage('build Front-end') {
             // Change the working directory to where your Angular project is located
             dir('/var/lib/jenkins/workspace/DevopsSpring/DevOps_Project_Front') {
                 withEnv(['PATH+="/home/vagrant/.nvm/versions/node/v21.1.0/lib/node_modules/npm/bin"']) {
-                sh 'npm install'
+                sh 'yarn install'
                 }
                 sh 'ng build --configuration=production'
                 // Build the Docker image for the Angular front-end
