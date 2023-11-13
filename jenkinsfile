@@ -11,16 +11,16 @@ pipeline {
             steps {
                 script {
                     // Cloner le référentiel GitHub en spécifiant l'URL
-                    checkout([$class: 'GitSCM', branches: [[name: 'MohamedSlama5emeSIM2A']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
+                    checkout([$class: 'GitSCM', branches: [[name: 'MohamedSlama5emeSIM2A']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']])
                 }
             }
         }
 
-            stage('Maven Clean') {
+        stage('Maven Clean') {
             steps {
                 sh 'mvn -f /var/lib/jenkins/workspace/springmohamed/DevOps_Project/pom.xml clean'
             }
-            }
+        }
 
         stage('Maven Compile') {
             steps {
@@ -99,16 +99,14 @@ pipeline {
                 }
             }
         }
-                stage('Grafana') {
+        stage('Grafana') {
             steps {
                 script {
-          
-                        sh 'docker start grafana'
-                  
+                    sh 'docker start grafana'
                 }
             }
         }
-      stage('Email Notification') {
+        stage('Email Notification') {
             steps {
                 script {
                     def buildStatus = currentBuild.currentResult.toString()
@@ -157,9 +155,8 @@ pipeline {
                 }
             }
         }
-
-    // Ajoutez d'autres étapes de votre pipeline ici
     }
+
     post {
         always {
             junit '**/target/surefire-reports/**/*.xml'
