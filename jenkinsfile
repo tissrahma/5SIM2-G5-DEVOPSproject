@@ -103,7 +103,15 @@ stage('Docker-compose') {
         }
     }
 }
-
+   stage('Grafana') {
+            steps {
+                script {
+          
+                        sh 'docker start grafana'
+                  
+                }
+            }
+        }
 
 
     // Ajoutez d'autres étapes de votre pipeline ici
