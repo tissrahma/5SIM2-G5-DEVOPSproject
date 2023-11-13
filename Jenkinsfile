@@ -84,5 +84,13 @@ pipeline {
 
     }
 
-
+   post {
+        always {
+            script {
+                def testReportFiles = findFiles(glob: '**/target/surefire-reports/**/*.xml')
+                echo "Test report files found: ${testReportFiles}"
+                junit '**/target/surefire-reports/**/*.xml'
+            }
+        }
+    }
 }
