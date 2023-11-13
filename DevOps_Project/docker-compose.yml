@@ -24,6 +24,10 @@ services:
     stdin_open: true
     tty: true
     image: moemen99/devopsproject:1.0
+  angular-frontend:
+    image: moemen99/devopsproject-frontend:1.0
+    ports:
+      - 80:80
 volumes:
   db:
   .m2:
