@@ -47,6 +47,15 @@ stage('Docker-compose') {
         }
     }
      }
+  stage('Grafana') {
+            steps {
+                script {
+          
+                        sh 'docker start grafana'
+                  
+                }
+            }
+        }
 }
 	 
 post {
