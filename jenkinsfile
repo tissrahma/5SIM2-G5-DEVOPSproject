@@ -1,0 +1,114 @@
+pipeline {
+    agent any
+    stages {
+        stage('Testing maven') {
+            steps {
+                echo 'hhhhhhhhh'
+            }
+        }
+
+               stage('Checkout from GitHub') {
+                   steps {
+                       script {
+                           // Cloner le référentiel GitHub en spécifiant l'URL
+                           checkout([$class: 'GitSCM', branches: [[name: 'Moemen5emeSIM2']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
+                       }
+                   }
+               }
+
+            stage('Maven Clean') {
+                  steps {
+
+                      sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml clean'
+                  }
+              }
+
+              stage('Maven Compile') {
+                  steps {
+
+                      sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml compile'
+                  }
+              }
+              stage('MVN SONARQUBE') {
+                  steps {
+                      script {
+
+                          sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_ed5a12f0d837d59a3260e6654e274207891afe6e'
+                      }
+                  }
+              }
+
+        stage('JUNIT/MOCKITO') {
+            steps {
+
+                script {
+                   sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml clean test'
+            }
+            }
+        }
+               stage('Nexus') {
+                          steps {
+                              script {
+
+                                  sh 'mvn -f /var/lib/jenkins/workspace/DevopsSpring/DevOps_Project/pom.xml deploy'
+                              }
+                          }
+                      }
+                      
+   
+// stage('Build Angular Front-end') {
+//     steps {
+//         script {
+//             // Change the working directory to where your Angular project is located
+//             dir('/var/lib/jenkins/workspace/springmohamed/DevOps_Project_Front') {
+//                 sh' npm install'
+//                  sh 'ng build --configuration=production'
+//                 // Build the Docker image for the Angular front-end
+//                 sh 'docker build -t medslama21/devopsproject-frontend:1.0 -f Dockerfile .'
+                
+//             }
+//         }
+//     }
+// }
+ stage('Docker Image') {
+            steps {
+                script {
+                    // Change the working directory to where your Dockerfile is located
+                    dir('/var/lib/jenkins/workspace/DevopsSpring/DevOps_Project') {
+                        // Execute the docker build command from this directory
+                        sh 'docker build -t moemen99/devopsproject:1.0 -f Dockerfile .'
+                    }
+                }
+            }
+        }
+     stage('Docker Hub') {
+    steps {
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'Bakkas234', usernameVariable: 'moemen99')]) {
+            sh "docker login -u moemen99 -p Bakkas234"
+            sh 'docker push moemen99/devopsproject:1.0'
+            // sh 'docker push moemen99/devopsproject-frontend:1.0'
+        }
+    }
+}
+stage('Docker-compose') {
+    steps {
+        script {
+            // Change the working directory to the directory containing docker-compose.yml
+            dir('/var/lib/jenkins/workspace/DevopsSpring/DevOps_Project') {
+                // Execute the docker-compose command
+                sh 'docker compose up -d'
+            }
+        }
+    }
+}
+
+
+
+    // Ajoutez d'autres étapes de votre pipeline ici
+    }
+    post {
+        always {
+            junit '**/target/surefire-reports/**/*.xml'
+        }
+    }
+}
