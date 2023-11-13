@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     // Cloner le référentiel GitHub en spécifiant l'URL
-                    checkout([$class: 'GitSCM', branches: [[name: 'MohamedSlama5emeSIM2A']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
+                    checkout([$class: 'GitSCM', branches: [[name: 'MohamedSlama5emeSIM2']], userRemoteConfigs: [[url: 'https://github.com/tissrahma/5SIM2-G5-DEVOPSproject']]])
                 }
             }
         }
