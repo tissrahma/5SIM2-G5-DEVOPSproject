@@ -157,9 +157,8 @@ pipeline {
                 }
             }
         }
-    }
+    
 
-    // Ajoutez d'autres étapes de votre pipeline ici
     }
     post {
         always {
