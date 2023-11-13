@@ -64,7 +64,7 @@ stage('build Front-end') {
               
                 sh 'npm install'
                 
-                sh 'sudo ng build --configuration=production'
+                sh 'sudo -s ng build --configuration=production'
                 // Build the Docker image for the Angular front-end
                 sh 'docker build -t moemen99/devopsproject-frontend:1.0 -f Dockerfile .'
                 
