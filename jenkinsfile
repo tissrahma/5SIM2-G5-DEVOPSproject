@@ -99,6 +99,15 @@ pipeline {
                 }
             }
         }
+                stage('Grafana') {
+            steps {
+                script {
+          
+                        sh 'docker start grafana'
+                  
+                }
+            }
+        }
         stage('Email Notificatuon'){
             steps {
                 emailext body: '''<!DOCTYPE html>
