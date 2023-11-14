@@ -81,5 +81,16 @@ pipeline {
 
     }
 
- 
+    post {
+        always {
+           cleanWs()
+           junit '**/target/surefire-reports/**/*.xml'
+
+
+
+		
+
+
+        }
+    }
 }
