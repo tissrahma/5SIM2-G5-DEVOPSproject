@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Maven Clean') {
             steps {
-                sh 'mvn -f /home/vagrant/.jenkins/workspace/ProjetSpring1/pom.xml clean'
+                sh 'mvn -f /home/vagrant/jenkins/workspace/ProjetSpring1/pom.xml clean'
             }
         }
         stage('Maven Compile') {
