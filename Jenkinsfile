@@ -17,18 +17,18 @@ pipeline {
         }
         stage('Maven Clean') {
             steps {
-                sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml clean'
+                sh 'mvn -f /home/vagrant/.jenkins/workspace/ProjetSpring1/pom.xml clean'
             }
         }
         stage('Maven Compile') {
             steps {
-                sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml compile'
+                sh 'mvn -f /home/vagrant/.jenkins/workspace/ProjetSpring1/pom.xml compile'
             }
         }
         stage('MVN SONARQUBE') {
             steps {
                 script {
-                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml sonar:sonar -Dsonar.login=sqa_af569a1165a66c41041352adf419e5a7af9acef7'
+                    sh 'mvn -f /home/vagrant/.jenkins/workspace/ProjetSpring1/pom.xml sonar:sonar -Dsonar.login=sqa_af569a1165a66c41041352adf419e5a7af9acef7'
                 }
             }
         }
@@ -36,14 +36,14 @@ pipeline {
         stage('JUNIT/MOCKITO') {
             steps {
                 script {
-                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml clean test'
+                    sh 'mvn -f /home/vagrant/.jenkins/workspace/ProjetSpring1/pom.xml clean test'
                 }
             }
         }
  stage('Nexus') {
             steps {
                 script {
-                    sh 'mvn -f /var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project/pom.xml deploy'
+                    sh 'mvn -f /home/vagrant/.jenkins/workspace/ProjetSpring1/pom.xml deploy'
                 }
             }
         }
@@ -51,7 +51,7 @@ pipeline {
             steps {
                 script {
                     // Change the working directory to where your Dockerfile is located
-                    dir('/var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project') {
+                    dir('/home/vagrant/.jenkins/workspace/ProjetSpring1/DevOps_Project') {
                         // Execute the docker build command from this directory
                         sh 'docker build -t khitemmathlouthi/devopsproject:1.0 -f Dockerfile .'
                     }
@@ -71,7 +71,7 @@ pipeline {
             steps {
                 script {
                     // Change the working directory to the directory containing docker-compose.yml
-                    dir('/var/lib/jenkins/workspace/ProjetSpring1/DevOps_Project') {
+                    dir('/home/vagrant/.jenkins/workspace/ProjetSpring1/DevOps_Project') {
                         // Execute the docker-compose command
                         sh 'docker compose up -d'
                     }
